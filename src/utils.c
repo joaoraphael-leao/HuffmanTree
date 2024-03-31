@@ -1,13 +1,14 @@
 #include <stdlib.h>
 
-#include "utils.h"
+#include "_utils.h"
+typedef uint8_t InteiroDe8Bits;
 
-void *uint8_para_ptr(uint8_t valor) {
+void *Inteiro8BitsViraPonteiro(uint8_t valor) {
   uint8_t *valor_p = (uint8_t *)malloc(sizeof(*valor_p));
   *valor_p = valor;
   return valor_p;
 }
 
-uint8_t ptr_para_uint8(void *ptr) {
+InteiroDe8Bits PonteiroViraInteiro8Bits(void *ptr) {
   return *((uint8_t *)ptr);
 }

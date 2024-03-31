@@ -1,9 +1,9 @@
 #include <stdlib.h>
 
-#include "estruturas.h"
+#include "_estruturas.h"
 
-ArvoreBin *arvore_bin_criar(void *item, Desalocador desalocar, ArvoreBin *esquerda, ArvoreBin *direita) {
-  ArvoreBin *novo_no = (ArvoreBin *)malloc(sizeof(*novo_no));
+ArvoreBinaria *arvore_bin_criar(void *item, Desalocador desalocar, ArvoreBinaria *esquerda, ArvoreBinaria *direita) {
+  ArvoreBinaria *novo_no = (ArvoreBinaria *)malloc(sizeof(*novo_no));
   novo_no->desalocar = desalocar;
   novo_no->item = item;
   novo_no->esquerda = esquerda;
@@ -11,16 +11,17 @@ ArvoreBin *arvore_bin_criar(void *item, Desalocador desalocar, ArvoreBin *esquer
   return novo_no;
 }
 
-void arvore_bin_desalocar(ArvoreBin *arvore) {
-  if (arvore) {
+void arvore_bin_desalocar(ArvoreBinaria *arvore) {
+  if (arvore) 
+  {
     arvore_bin_desalocar(arvore->esquerda);
     arvore_bin_desalocar(arvore->direita);
-    arvore->desalocar(arvore->item);
+    arvore -> desalocar(arvore->item);
     free(arvore);
   }
 }
 
-size_t arvore_bin_tamanho(ArvoreBin *arvore) {
+size_t arvore_bin_tamanho(ArvoreBinaria *arvore) {
   if (!arvore) {
     return 0;
   } else {
@@ -28,19 +29,19 @@ size_t arvore_bin_tamanho(ArvoreBin *arvore) {
   }
 }
 
-bool arvore_bin_e_folha(ArvoreBin *arvore) {
+bool arvore_bin_e_folha(ArvoreBinaria *arvore) {
   return !arvore->esquerda && !arvore->direita;
 }
 
-void *arvore_bin_item(ArvoreBin *arvore) {
+void *arvore_bin_item(ArvoreBinaria *arvore) {
   return arvore->item;
 }
 
-ArvoreBin *arvore_bin_esquerda(ArvoreBin *arvore) {
+ArvoreBinaria *arvore_bin_esquerda(ArvoreBinaria *arvore) {
   return arvore->esquerda;
 }
 
-ArvoreBin *arvore_bin_direita(ArvoreBin *arvore) {
+ArvoreBinaria *arvore_bin_direita(ArvoreBinaria *arvore) {
   return arvore->direita;
 }
 
@@ -109,9 +110,11 @@ NoFilaPrio *fila_prio_desenfileirar(FilaPrio *fila) {
   }
 }
 
-void no_fila_prio_desalocar(NoFilaPrio *no) {
-  if (no) {
-    no->desalocar(no->item);
+void no_fila_prio_desalocar(NoFilaPrio *no) 
+{
+  if (no) 
+  {
+    no -> desalocar(no->item);
     free(no);
   }
 }
