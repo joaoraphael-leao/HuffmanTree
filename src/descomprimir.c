@@ -86,7 +86,6 @@ void descomprimir_com_arvore(FILE *arquivo_in, FILE *arquivo_out, ArvoreBinaria 
   bool ultimo_byte;
 
   posicaoArquivo = ftell(arquivo_in);
-  printf("Posicao arquivo: %ld\n", posicaoArquivo);
   tamanho = encontrar_tamanho_arquivo(arquivo_in);
 
   // Começa a percorrer na raíz
@@ -152,7 +151,7 @@ FILE* preparar_arquivo_descomprimido(FILE *arquivo_in, int tamanho_extensao)
 
   fread(extensao, 1, (size_t)tamanho_extensao, arquivo_in);
   extensao[tamanho_extensao] = '\0';
-  printf("TAMANHO %d\nEXTENSAO %s\n",tamanho_extensao, extensao);
+  printf("EXTENSAO %s\n", extensao);
   char nome_arquivo[21] = "descomprimido.";
   strcat(nome_arquivo, extensao);
 
